@@ -26,7 +26,7 @@
     <div class="sec-head reveal">
       <span class="sec-no">01</span>
       <h2>overview / q3</h2>
-      <span class="hint">render: 0.4ms · frame: 60fps</span>
+      <span class="hint">svg · zero dependencies</span>
     </div>
     <p class="lede reveal">A dense dashboard language built around <b>clear signals and reusable structure</b>. The study: how much information a page can carry before it stops feeling calm. Everything below is drawn from one token set.</p>
 
@@ -49,16 +49,25 @@
     </div>
 
     <div class="chart-panel reveal">
-      <div class="chart-head"><b>revenue / weekly</b><span>2026-04 → 2026-09</span></div>
-      <div class="chart">
+      <div class="chart-head"><b>revenue / weekly</b><span id="readout" aria-live="polite">2026-04 → 2026-09 · hover or ← → to inspect</span></div>
+      <div class="chart" id="chart" tabindex="0" aria-label="Weekly revenue versus forecast, April to September 2026. Use left and right arrow keys to inspect weekly values.">
         <svg viewBox="0 0 700 180" preserveAspectRatio="none" aria-hidden="true">
           <line class="grid-line" x1="0" y1="45" x2="700" y2="45"/>
           <line class="grid-line" x1="0" y1="90" x2="700" y2="90"/>
           <line class="grid-line" x1="0" y1="135" x2="700" y2="135"/>
+          <rect class="band" x="0" y="64" width="700" height="22"/>
+          <line class="band-edge" x1="0" y1="64" x2="700" y2="64"/>
+          <line class="band-edge" x1="0" y1="86" x2="700" y2="86"/>
           <polyline class="spark" points="0,150 90,118 170,132 250,84 340,104 420,60 510,82 610,34 700,48" stroke="#e8c37a"/>
           <polyline class="spark" points="0,160 90,152 170,156 250,138 340,146 420,120 510,134 610,108 700,116" stroke="#7db4ff" style="transition-delay:.5s"/>
         </svg>
+        <div class="cross-line" hidden></div>
+        <span class="pt pt-rev" hidden></span>
+        <span class="pt pt-fc" hidden></span>
+        <span class="line-tag" style="top:20%">revenue</span>
+        <span class="line-tag tag-fc" style="top:72%">forecast</span>
       </div>
+      <div class="axis" aria-hidden="true"><span>Apr</span><span>May</span><span>Jun</span><span>Jul</span><span>Aug</span><span>Sep</span></div>
       <div class="legend">
         <i style="--dot:#e8c37a">revenue</i>
         <i style="--dot:#7db4ff">forecast</i>
@@ -73,7 +82,7 @@
     <div class="sec-head reveal">
       <span class="sec-no">02</span>
       <h2>system</h2>
-      <span class="hint">3 layers · 0 orphan styles</span>
+      <span class="hint">3 layers · 1 token set</span>
     </div>
     <div class="sys reveal">
       <div class="sys-cell">
@@ -104,12 +113,12 @@
     </div>
     <div class="table reveal">
       <div class="trow head"><div>token</div><div>value</div><div>role</div><div>used in</div></div>
-      <div class="trow"><div class="tok">--signal-amber</div><div class="val">#e8c37a</div><div>primary signal</div><div class="use">kpi · chart</div></div>
-      <div class="trow"><div class="tok">--signal-blue</div><div class="val">#7db4ff</div><div>forecast</div><div class="use">chart</div></div>
-      <div class="trow"><div class="tok">--signal-green</div><div class="val">#7fd69b</div><div>positive delta</div><div class="use">kpi · nav</div></div>
-      <div class="trow"><div class="tok">--signal-red</div><div class="val">#e07a6a</div><div>negative delta</div><div class="use">kpi</div></div>
+      <div class="trow"><div class="tok">--amber</div><div class="val">#e8c37a</div><div>primary signal</div><div class="use">kpi · chart · focus</div></div>
+      <div class="trow"><div class="tok">--blue</div><div class="val">#7db4ff</div><div>forecast signal</div><div class="use">chart · kpi accent</div></div>
+      <div class="trow"><div class="tok">--green</div><div class="val">#7fd69b</div><div>positive / live</div><div class="use">kpi · nav</div></div>
+      <div class="trow"><div class="tok">--red</div><div class="val">#e07a6a</div><div>negative delta</div><div class="use">kpi</div></div>
       <div class="trow"><div class="tok">--panel</div><div class="val">#14120f</div><div>surface</div><div class="use">global</div></div>
-      <div class="trow"><div class="tok">--hairline</div><div class="val">#2b2823</div><div>structure</div><div class="use">borders · grid</div></div>
+      <div class="trow"><div class="tok">--line</div><div class="val">#2b2823</div><div>structure</div><div class="use">borders · grid</div></div>
     </div>
   </div>
 </section>
@@ -117,7 +126,7 @@
 <footer class="footer">
   <div class="wrap footer-row">
     <span>amulet black · interface study · fictional product</span>
-    <span><span class="key">tab</span> <span class="key">shift+tab</span> keyboard-first</span>
+    <span><span class="key">←</span> <span class="key">→</span> inspect chart · <span class="key">tab</span> keyboard-first</span>
     <a href="../../">← back to naman</a>
   </div>
 </footer>
@@ -125,6 +134,41 @@
 <script>
 const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.18});
 document.querySelectorAll('.reveal,.kpi,.chart-panel').forEach(el=>io.observe(el));
+
+/* chart inspection — pointer and keyboard drive the same state */
+(()=>{
+  const chart=document.getElementById('chart'),read=document.getElementById('readout');
+  if(!chart)return;
+  const WEEKS=['Apr 06','Apr 27','May 18','Jun 08','Jun 29','Jul 20','Aug 10','Aug 31','Sep 21'];
+  const REV=[1.2,1.9,1.6,2.6,2.1,3.3,2.7,4.1,3.7];
+  const FC =[1.1,1.4,1.2,2.1,1.7,3.0,2.4,3.6,3.2];
+  const X =[0,90,170,250,340,420,510,610,700].map(x=>x/700*100);
+  const YR=[150,118,132,84,104,60,82,34,48].map(y=>y/180*100);
+  const YF=[160,152,156,138,146,120,134,108,116].map(y=>y/180*100);
+  const xline=chart.querySelector('.cross-line');
+  const ptR=chart.querySelector('.pt-rev'),ptF=chart.querySelector('.pt-fc');
+  const REST='2026-04 → 2026-09';
+  let idx=-1;
+  const show=i=>{idx=i;xline.hidden=ptR.hidden=ptF.hidden=false;
+    xline.style.left=ptR.style.left=ptF.style.left=X[i]+'%';
+    ptR.style.top=YR[i]+'%';ptF.style.top=YF[i]+'%';
+    read.textContent=WEEKS[i]+' · rev $'+REV[i].toFixed(1)+'k · fcst $'+FC[i].toFixed(1)+'k';};
+  const clear=()=>{idx=-1;xline.hidden=ptR.hidden=ptF.hidden=true;read.textContent=REST+' · hover or ← → to inspect';};
+  chart.addEventListener('pointermove',e=>{
+    const r=chart.getBoundingClientRect(),fx=(e.clientX-r.left)/r.width;
+    let best=0,bd=9;X.forEach((x,i)=>{const d=Math.abs(x/100-fx);if(d<bd){bd=d;best=i}});
+    show(best);
+  });
+  chart.addEventListener('pointerleave',clear);
+  chart.addEventListener('keydown',e=>{
+    if(e.key==='ArrowRight'){show(idx<0?0:Math.min(idx+1,X.length-1));e.preventDefault()}
+    else if(e.key==='ArrowLeft'){show(idx<0?X.length-1:Math.max(idx-1,0));e.preventDefault()}
+    else if(e.key==='Home'){show(0);e.preventDefault()}
+    else if(e.key==='End'){show(X.length-1);e.preventDefault()}
+    else if(e.key==='Escape')clear();
+  });
+  chart.addEventListener('blur',clear);
+})();
 </script>
 </body>
 </html>
