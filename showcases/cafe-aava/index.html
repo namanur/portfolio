@@ -31,7 +31,7 @@
     <div class="reveal">
       <div class="photo">
         <img src="img/hero.jpg" alt="Warm morning light inside Café Aava"
-             onerror="this.onerror=null;this.src=this.getAttribute('src').replace('.jpg','.svg')">
+             onerror="this.onerror=null;this.src=this.getAttribute('src').replace('.jpg','.svg')" onload="this.closest('.photo,.plate').classList.add('has-img')">
         <div class="ph-label">photo · the first table by the window</div>
       </div>
       <div class="stamp" data-scroll-spin aria-hidden="true">
@@ -62,9 +62,9 @@
       </div>
     </div>
     <div class="story-grid">
-      <div class="photo reveal"><img src="img/interior-1.jpg" alt="Wooden tables and terracotta walls" onerror="this.onerror=null;this.src=this.getAttribute('src').replace('.jpg','.svg')"><div class="ph-label">photo · the long table</div></div>
-      <div class="photo reveal"><img src="img/pour.jpg" alt="A pour in progress at the counter" onerror="this.onerror=null;this.src=this.getAttribute('src').replace('.jpg','.svg')"><div class="ph-label">photo · the counter</div></div>
-      <div class="photo reveal"><img src="img/interior-2.jpg" alt="Window seats in afternoon light" onerror="this.onerror=null;this.src=this.getAttribute('src').replace('.jpg','.svg')"><div class="ph-label">photo · window seats</div></div>
+      <div class="photo reveal"><img src="img/interior-1.jpg" alt="Wooden tables and terracotta walls" onerror="this.onerror=null;this.src=this.getAttribute('src').replace('.jpg','.svg')" onload="this.closest('.photo,.plate').classList.add('has-img')"><div class="ph-label">photo · the long table</div></div>
+      <div class="photo reveal"><img src="img/pour.jpg" alt="A pour in progress at the counter" onerror="this.onerror=null;this.src=this.getAttribute('src').replace('.jpg','.svg')" onload="this.closest('.photo,.plate').classList.add('has-img')"><div class="ph-label">photo · the counter</div></div>
+      <div class="photo reveal"><img src="img/interior-2.jpg" alt="Window seats in afternoon light" onerror="this.onerror=null;this.src=this.getAttribute('src').replace('.jpg','.svg')" onload="this.closest('.photo,.plate').classList.add('has-img')"><div class="ph-label">photo · window seats</div></div>
       <p class="story-quote reveal">Coffee is better when nobody is rushing — <b>so we don't.</b></p>
     </div>
   </div>
@@ -103,7 +103,7 @@
       <div class="hours"><span>Mon–Fri · 8am–9pm</span><span>Sat–Sun · 8am–11pm</span></div>
       <a class="btn solid" href="mailto:hello@cafeaava.example">Ask a question</a>
     </div>
-    <div class="photo reveal" style="min-height:380px"><img src="img/exterior.jpg" alt="The yellow wall outside Café Aava" onerror="this.onerror=null;this.src=this.getAttribute('src').replace('.jpg','.svg')"><div class="ph-label">photo · the yellow wall</div></div>
+    <div class="photo reveal" style="min-height:380px"><img src="img/exterior.jpg" alt="The yellow wall outside Café Aava" onerror="this.onerror=null;this.src=this.getAttribute('src').replace('.jpg','.svg')" onload="this.closest('.photo,.plate').classList.add('has-img')"><div class="ph-label">photo · the yellow wall</div></div>
   </div>
 </section>
 

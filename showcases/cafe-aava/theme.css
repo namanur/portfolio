@@ -142,3 +142,6 @@ h2 em{font-style:italic;color:var(--leaf)}
   *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
   .reveal{opacity:1;transform:none}
 }
+
+/* real photo loaded → placeholder label retires */
+.has-img .ph-label{display:none}

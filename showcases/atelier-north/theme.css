@@ -110,3 +110,6 @@ img{max-width:100%;display:block}
   .reveal{opacity:1;transform:none}
   .plate img{transform:none}
 }
+
+/* real photo loaded → placeholder label retires */
+.has-img .ph-label{display:none}
