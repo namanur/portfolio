@@ -31,7 +31,7 @@ An **original financial/market-data visualization project** — researched, chos
 
 ## Decisions so far
 
-<!-- one line per closed ticket -->
+- DV-001 closed: education stream complete. carries into DV-004 (Plot is in the picture) and DV-005 (thesis-first concepts, horizon/ridgeline trade-off, index-chart scrub interaction).
 
 ## Not yet specified
 

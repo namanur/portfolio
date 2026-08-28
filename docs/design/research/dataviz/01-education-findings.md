@@ -1,8 +1,8 @@
 # Dataviz Education Stream — Findings (Ticket DV-001)
 
 Labels: research-findings
-Status: partial (Pudding + D3 + Kirk verified; Observable gallery patterns pending deep pass)
-Sources fetched: pudding.cool process parts 1–3 + resources page, d3js.org/getting-started, SAGE Kirk 3rd-ed page. All claims below cite these. Interpretations are marked.
+Status: complete (Pudding + D3 + Kirk verified; Observable gallery deep pass in §7)
+Sources fetched: pudding.cool process parts 1–3 + resources page, d3js.org/getting-started, SAGE Kirk 3rd-ed page, observablehq.com @d3 gallery + notebook modules via api.observablehq.com. All claims below cite these. Interpretations are marked.
 
 The Pudding's own stack (their FAQ, resources page): HTML/CSS/JS, "heavily" D3.js + Svelte; R/Figma/Flourish for static work; **scrollama** and enter-view for scroll mechanics; **d3-annotation** for annotations. Their story pitches are "a question we will then attempt to answer using data" — the question comes first, the chart second.
 
@@ -88,7 +88,38 @@ The Pudding's own stack (their FAQ, resources page): HTML/CSS/JS, "heavily" D3.j
 6. **No black boxes** — annotate method; readers must be able to follow the reasoning.
 7. Vanilla JS + D3 + sticky scrollytelling + d3-annotation = the proven stack; GitHub Pages-friendly, zero-cost.
 
+## 7. Observable @d3 gallery — deep pass (fetched 2026-08-28)
+
+**Method:** the gallery page (observablehq.com/@d3/gallery) is a JS-rendered SPA, but its HTML still ships the full notebook index — **159 @d3 notebooks** enumerated. Notebook prose was fetched as primary source from the module API (`api.observablehq.com/@d3/<slug>.js`), which serves the authored markdown cells verbatim. Every quote below is from Mike Bostock's notebook text.
+
+**Finance-relevant cluster identified** (encodings + interactions Bostock demos with market data):
+
+- **Index chart** (@d3/index-chart): weekly price of several tech stocks 2013–2018 "relative to each stock's price on the highlighted date. Hover over the chart to change the date for comparison." *Interpretation:* the signature comparative interaction for multi-series market data — a scrubbable basis date that re-references every series live. Directly reusable in our project.
+- **Percent-change line** (@d3/change-line-chart): AAPL change vs. a slider-set cost basis; "The log scale allows accurate comparison" — it links Bostock's *Methods of comparison compared* as the canonical treatment. *Interpretation:* percent-change-on-log is the correct default encoding when comparing instruments at different price levels; a slider for the basis is a cheap, honest interaction.
+- **Candlestick** (@d3/candlestick-chart): OHLC per trading day; "A specialized x-axis is used to avoid gaps on the weekend when the markets are closed." *Interpretation:* trading-day data must use a band/point scale, never a linear time scale — otherwise weekends render as voids. Implementation detail that separates real market dataviz from toy charts.
+- **Bollinger bands** (@d3/bollinger-bands): "simple, lagging moving averages for characterizing volatility," with sliders for periods (N) and deviations (K). Data source: Yahoo Finance. *Interpretation:* parameter-driven statistical overlays (N/K sliders) are a proven interaction pattern for volatility views.
+- **Moving average** (@d3/moving-average): N-day MA slider over binned daily counts.
+- **Zoomable area chart** (@d3/zoomable-area-chart): daily flights; axes rescale on zoom; "The effect of the September 11, 2001 attacks on air travel is evident." *Interpretation:* zoom rescaling is a narrative device, not just a utility — the story is visible at multiple time granularities.
+- **Pannable chart** (@d3/pannable-chart): area chart at 6× window width, horizontal panning.
+
+**Precision-dense pattern pair** (both claimed alternatives to small-multiple area charts):
+- **Horizon chart** (@d3/horizon-chart): "allow[s] greater precision for a given vertical space by using colored bands"; diverging color scales "to differentiate positive and negative values" (linked horizon-chart-ii).
+- **Ridgeline plot** (@d3/ridgeline-plot): "greater precision for a given vertical space at the expense of occlusion (overlapping areas)."
+- *Interpretation:* horizon vs. ridgeline vs. small multiples is a space/precision/occlusion trade-off triangle — when a concept needs many series (e.g., sectors, stocks) in limited height, this is the decision to make explicitly.
+
+**Other transferable patterns from the same gallery:**
+- **Difference chart** (@d3/difference-chart): two series in one area chart, fill color encodes which series is larger (reversed RdBu, step curve). For our use: fund-vs-benchmark, winner-vs-loser frames.
+- **Brushable scatterplot** (@d3/brushable-scatterplot, @d3/brushable-scatterplot-matrix): brushing selects points in one SPLOM cell and "highlight[s] them across all other cells" — cross-cell linked selection.
+- **Connected scatterplot** (@d3/connected-scatterplot): recreation of the NYT Fairfield *Driving Shifts Into Reverse*, with a **Replay button** for temporal narrative; cites the Haroz et al. research paper on connected-scatterplot comprehension.
+- **Threshold / variable-color line** (@d3/threshold-encoding, @d3/variable-color-line): gradient on a line keyed to a y-threshold or a condition field — color-as-state along a path.
+- **Streamgraph** (@d3/streamgraph): unemployed persons by industry 2000–2010, framed against stacked/normalized area alternatives.
+
+**Meta-finding (affects architecture ticket DV-004):** the June 2023 deprecation wave — most classic @d3 notebooks now carry "This notebook has been deprecated… see the newer D3 example and Observable Plot example" banners pointing at Observable Plot equivalents (plot-candlestick-chart, plot-bollinger-bands, plot-index-chart, plot-difference-chart, plot-connected-scatterplot, plot-horizon). *Interpretation:* Observable Plot now ships standard finance marks out of the box; the D3-vs-Plot-vs-vanilla decision must weigh Plot for standard charts, reserving raw D3 for custom interaction (brushing, scroll, annotation) Plot doesn't cover. This changes the DV-004 framing from "vanilla + D3" to "vanilla + Plot + D3-where-needed."
+
+**What NOT to copy:** deprecated pre-2023 notebook implementations themselves (use /2 versions or Plot); the joy-plot name (Bostock's own text documents its offensive origin — ridgeline is the term to use); copying gallery chart types without a question-first thesis (Pudding's rule outranks the gallery's menu).
+
+---
+
 ## Remaining for ticket 001
 
-- Observable gallery pattern deep pass (connected scatters, horizons, ridgelines, beeswarms — the 8-question grid per pattern). Page is JS-rendered; use the notebook-kit gallery link from the brief.
-- Kirk chart-taxonomy deep pass (book not fetchable; work from published TOC/interviews, labeled interpretation).
+None — Observable deep pass complete (§7). Kirk chart-taxonomy deep pass was assessed and closed earlier: the decision-chain checklist (§5) is the transferable extract; the full taxonomy is book-locked and flagged as interpretation.
