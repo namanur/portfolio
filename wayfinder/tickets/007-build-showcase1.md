@@ -1,7 +1,7 @@
 # Build Showcase 1 — Indian-business conversion landing page
 
 Labels: wayfinder:task
-Status: open
+Status: open (v1 draft adopted in repo — polish/finish remaining)
 Assignee: (unclaimed)
 Blocked-by: 003, 005
 

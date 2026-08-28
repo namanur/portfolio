@@ -1,7 +1,7 @@
 # Scaffold monorepo and shared engineering conventions
 
 Labels: wayfinder:task
-Status: open
+Status: open (v1 draft adopted in repo — polish/finish remaining)
 Assignee: (unclaimed)
 Blocked-by: (none)
 
