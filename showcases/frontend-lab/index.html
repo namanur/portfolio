@@ -1,11 +1,130 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Amulet Black — Interface Study</title><link rel="stylesheet" href="../../assets/site.css"></head>
-<body style="background:#0d0c0a;color:#f0e9dc;font-family:system-ui,sans-serif">
-<nav class="nav" style="background:rgba(13,12,10,.82);border-color:#302c26;color:#f0e9dc"><div class="container nav-inner"><a class="brand" href="../../">naman<span style="color:#7db4ff">/lab</span></a><div class="nav-links"><a href="#overview">Overview</a><a href="#system">System</a></div><a class="btn nav-cta" href="../../" style="border-color:#4a443a">Portfolio</a></div></nav>
-<section id="overview" class="section" style="padding-top:170px"><div class="container"><div class="eyebrow" style="color:#7db4ff">Frontend Lab · Amulet Black</div><div class="display" style="margin-top:22px">A dashboard<br><em class="serif">that stays legible.</em></div><p style="max-width:650px;color:#9a9387;font-size:1.05rem;margin-top:30px">A dense interface study built around restrained accents, clear signals and reusable UI primitives. The point is not decoration. It is information that remains readable under pressure.</p>
-<div style="margin-top:70px;border:1px solid #2e2a24;padding:18px;background:#141310" class="reveal"><div style="display:flex;justify-content:space-between;font:11px monospace;color:#9a9387;padding-bottom:18px;border-bottom:1px solid #2e2a24"><span>OVERVIEW / Q3</span><span>LIVE</span></div><div class="kpi-row" style="margin-top:18px"><div class="kpi"><span>REVENUE</span><b style="color:#f0e9dc">$48,240</b></div><div class="kpi"><span>USERS</span><b style="color:#f0e9dc">1,245</b></div><div class="kpi"><span>CONVERSION</span><b style="color:#f0e9dc">8.6%</b></div></div><div class="chart"><svg viewBox="0 0 700 160" preserveAspectRatio="none"><polyline points="0,140 90,110 170,122 250,76 340,94 420,55 510,75 610,30 700,42" fill="none" stroke="#7db4ff" stroke-width="3"/><polyline points="0,150 90,144 170,146 250,130 340,137 420,115 510,128 610,105 700,112" fill="none" stroke="#7fd69b" stroke-width="2"/></svg></div></div></div></section>
-<section id="system" class="process"><div class="container"><div class="section-head reveal"><div class="eyebrow">System</div><div><h2>Structure carries the memory.</h2><p>The interface is built around a small vocabulary of tokens and components. That makes the system easier for another human or agent to understand and change.</p></div></div><div class="process-grid stagger"><div class="process-step"><div class="process-no" style="color:#7db4ff">01</div><h3>Tokens</h3><p>Color, type, spacing and borders live in a deliberate foundation.</p></div><div class="process-step"><div class="process-no" style="color:#7fd69b">02</div><h3>Components</h3><p>Repeated UI patterns become reusable building blocks.</p></div><div class="process-step"><div class="process-no" style="color:#e8c37a">03</div><h3>Signals</h3><p>Meaning is never encoded by color alone. Labels and structure carry it too.</p></div><div class="process-step"><div class="process-no" style="color:#f0e9dc">04</div><h3>Checks</h3><p>Build and quality checks catch the boring failures before a human has to.</p></div></div></div></section>
-<section class="section"><div class="container"><div class="section-head reveal"><div class="eyebrow">Design note</div><div><h2>Quiet by default.<br>Precise when needed.</h2><p style="color:#9a9387">The dashboard deliberately avoids gratuitous gradients, glass, decorative grids and motion. A dense product interface has different needs from a brand landing page.</p></div></div><div class="rule" style="background:#2e2a24"></div></div></section>
-<footer class="footer container" style="border-top:1px solid #2e2a24;color:#9a9387"><span>Interface study · Amulet Black</span><a href="../../">← Back to Naman</a></footer>
-<script src="../../assets/site.js"></script></body></html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Amulet Black — a dense dashboard interface study. Tokens, components, signals.">
+<title>Amulet Black — Interface Study / Frontend Lab</title>
+<link rel="stylesheet" href="theme.css">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="wrap nav-in">
+    <a class="logo" href="#">amulet<span>/lab</span></a>
+    <div class="nav-links">
+      <a href="#overview"><b>01</b>overview</a>
+      <a href="#system"><b>02</b>system</a>
+      <a href="#tokens"><b>03</b>tokens</a>
+    </div>
+    <span class="live">LIVE</span>
+  </div>
+</nav>
+
+<section id="overview" class="section">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-no">01</span>
+      <h2>overview / q3</h2>
+      <span class="hint">render: 0.4ms · frame: 60fps</span>
+    </div>
+    <p class="lede reveal">A dense dashboard language built around <b>clear signals and reusable structure</b>. The study: how much information a page can carry before it stops feeling calm. Everything below is drawn from one token set.</p>
+
+    <div class="kpis reveal">
+      <div class="kpi">
+        <div class="k-label"><span>Revenue</span><span>Q3</span></div>
+        <div class="k-value">$48,240</div>
+        <div class="k-delta">▲ 12.4% vs Q2</div>
+      </div>
+      <div class="kpi">
+        <div class="k-label"><span>Active users</span><span>30d</span></div>
+        <div class="k-value">1,245</div>
+        <div class="k-delta">▲ 3.1% vs prior</div>
+      </div>
+      <div class="kpi">
+        <div class="k-label"><span>Conversion</span><span>30d</span></div>
+        <div class="k-value">8.6%</div>
+        <div class="k-delta down">▼ 0.4% vs prior</div>
+      </div>
+    </div>
+
+    <div class="chart-panel reveal">
+      <div class="chart-head"><b>revenue / weekly</b><span>2026-04 → 2026-09</span></div>
+      <div class="chart">
+        <svg viewBox="0 0 700 180" preserveAspectRatio="none" aria-hidden="true">
+          <line class="grid-line" x1="0" y1="45" x2="700" y2="45"/>
+          <line class="grid-line" x1="0" y1="90" x2="700" y2="90"/>
+          <line class="grid-line" x1="0" y1="135" x2="700" y2="135"/>
+          <polyline class="spark" points="0,150 90,118 170,132 250,84 340,104 420,60 510,82 610,34 700,48" stroke="#e8c37a"/>
+          <polyline class="spark" points="0,160 90,152 170,156 250,138 340,146 420,120 510,134 610,108 700,116" stroke="#7db4ff" style="transition-delay:.5s"/>
+        </svg>
+      </div>
+      <div class="legend">
+        <i style="--dot:#e8c37a">revenue</i>
+        <i style="--dot:#7db4ff">forecast</i>
+        <i style="--dot:#7fd69b">target band</i>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="system" class="section" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-no">02</span>
+      <h2>system</h2>
+      <span class="hint">3 layers · 0 orphan styles</span>
+    </div>
+    <div class="sys reveal">
+      <div class="sys-cell">
+        <div class="s-no">02 / a</div>
+        <h3>Tokens</h3>
+        <p>Color, type, spacing and borders live in one deliberate foundation. No value appears twice with two meanings.</p>
+      </div>
+      <div class="sys-cell">
+        <div class="s-no">02 / b</div>
+        <h3>Components</h3>
+        <p>Repeated patterns become building blocks. A new screen is assembly, not invention.</p>
+      </div>
+      <div class="sys-cell">
+        <div class="s-no">02 / c</div>
+        <h3>Signals</h3>
+        <p>Meaning is never encoded by color alone — labels and structure carry it. Color only confirms.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="tokens" class="section" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-no">03</span>
+      <h2>tokens / excerpt</h2>
+      <span class="hint">hover a row</span>
+    </div>
+    <div class="table reveal">
+      <div class="trow head"><div>token</div><div>value</div><div>role</div><div>used in</div></div>
+      <div class="trow"><div class="tok">--signal-amber</div><div class="val">#e8c37a</div><div>primary signal</div><div class="use">kpi · chart</div></div>
+      <div class="trow"><div class="tok">--signal-blue</div><div class="val">#7db4ff</div><div>forecast</div><div class="use">chart</div></div>
+      <div class="trow"><div class="tok">--signal-green</div><div class="val">#7fd69b</div><div>positive delta</div><div class="use">kpi · nav</div></div>
+      <div class="trow"><div class="tok">--signal-red</div><div class="val">#e07a6a</div><div>negative delta</div><div class="use">kpi</div></div>
+      <div class="trow"><div class="tok">--panel</div><div class="val">#14120f</div><div>surface</div><div class="use">global</div></div>
+      <div class="trow"><div class="tok">--hairline</div><div class="val">#2b2823</div><div>structure</div><div class="use">borders · grid</div></div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="wrap footer-row">
+    <span>amulet black · interface study · fictional product</span>
+    <span><span class="key">tab</span> <span class="key">shift+tab</span> keyboard-first</span>
+    <a href="../../">← back to naman</a>
+  </div>
+</footer>
+
+<script>
+const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.18});
+document.querySelectorAll('.reveal,.kpi,.chart-panel').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>

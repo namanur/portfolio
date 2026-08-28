@@ -1,0 +1,112 @@
+/* Atelier North — own identity. Cold, precise, expensive. The anti-café. */
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700&family=Archivo:wght@300;400;500&family=Space+Mono:wght@400&display=swap');
+
+:root{
+  --bone:#e8e4dc;
+  --bone-2:#ded9cf;
+  --graphite:#14161a;
+  --graphite-2:#1d2026;
+  --steel:#39568c;
+  --bronze:#b08d57;
+  --hairline:#c9c3b8;
+  --ease:cubic-bezier(.19,1,.22,1); /* Variant's signature curve — slow, heavy settle */
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bone);color:var(--graphite);font-family:"Archivo",system-ui,sans-serif;font-weight:300;line-height:1.55}
+::selection{background:var(--graphite);color:var(--bone)}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+:focus-visible{outline:2px solid var(--steel);outline-offset:4px}
+
+.wrap{width:min(calc(100% - 48px),1240px);margin:auto}
+
+/* ---- index nav: numbered, hairline, small caps ---- */
+.nav{position:sticky;top:0;z-index:50;background:var(--bone);border-bottom:1px solid var(--hairline)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;padding:18px 0}
+.logo{font-family:"Syne",sans-serif;font-weight:700;font-size:1.05rem;letter-spacing:.34em;text-transform:uppercase}
+.logo span{color:var(--steel)}
+.nav-links{display:flex;gap:34px;font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;font-weight:400}
+.nav-links a i{font-style:normal;color:var(--steel);margin-right:7px;font-family:"Space Mono",monospace;font-size:.68rem}
+.nav-links a{position:relative;padding-bottom:3px}
+.nav-links a::after{content:"";position:absolute;left:0;right:100%;bottom:0;height:1px;background:var(--graphite);transition:right .6s var(--ease)}
+.nav-links a:hover::after{right:0}
+
+/* ---- buttons: quiet rectangles ---- */
+.btn{display:inline-block;padding:15px 30px;border:1px solid var(--graphite);font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;font-weight:400;transition:background .5s var(--ease),color .5s var(--ease)}
+.btn:hover{background:var(--graphite);color:var(--bone)}
+.btn.dark{background:var(--graphite);color:var(--bone)}
+.btn.dark:hover{background:transparent;color:var(--graphite)}
+
+/* ---- hero: statement + full-bleed plate ---- */
+.hero{padding:110px 0 90px}
+.statement{font-family:"Syne",sans-serif;font-weight:500;font-size:clamp(2.6rem,6.4vw,5.6rem);line-height:1.02;letter-spacing:-.015em;max-width:1080px}
+.statement em{font-style:normal;color:var(--steel)}
+.statement .thin{font-weight:400;color:#6a675f}
+.hero-sub{display:flex;justify-content:space-between;align-items:end;gap:40px;margin-top:44px}
+.hero-sub p{max-width:420px;color:#6a675f;margin:0}
+.hero-sub .meta{font-family:"Space Mono",monospace;font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:#8a857a;text-align:right}
+
+/* photography: plates that slowly breathe */
+.plate{position:relative;overflow:hidden;background:linear-gradient(160deg,var(--bone-2),#cfc9bd);aspect-ratio:16/10}
+.plate img{width:100%;height:100%;object-fit:cover;transform:scale(1.08);transition:transform 1.8s var(--ease)}
+.plate.in img{transform:scale(1)}
+.plate .ph-label{position:absolute;inset:auto 0 12px 0;text-align:center;font-family:"Space Mono",monospace;font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;color:#8a857a}
+.plate.tall{aspect-ratio:4/5}
+.hero-plate{margin-top:64px}
+
+/* ---- collection: alternating rows with reveal captions ---- */
+.section{padding:110px 0}
+.sec-label{display:flex;align-items:baseline;gap:18px;border-top:1px solid var(--hairline);padding-top:16px;margin-bottom:60px}
+.sec-label .no{font-family:"Space Mono",monospace;font-size:.72rem;color:var(--steel)}
+.sec-label h2{font-family:"Syne",sans-serif;font-weight:500;font-size:clamp(1.9rem,4vw,3.4rem);line-height:1.02;letter-spacing:-.01em;margin:0}
+.obj{display:grid;grid-template-columns:1.25fr .75fr;gap:48px;align-items:end;margin-bottom:90px}
+.obj:nth-child(even){grid-template-columns:.75fr 1.25fr}
+.obj:nth-child(even) .obj-visual{order:2}
+.obj-visual{position:relative}
+.obj-cap{padding-top:18px;border-top:1px solid var(--hairline);display:grid;grid-template-columns:1fr auto;gap:8px;align-items:start}
+.obj-cap h3{font-family:"Syne",sans-serif;font-weight:500;font-size:1.5rem;margin:0 0 10px;letter-spacing:-.01em}
+.obj-cap p{margin:0;color:#6a675f;font-size:.95rem;max-width:380px}
+.obj-cap .price{font-family:"Space Mono",monospace;font-size:.78rem;letter-spacing:.14em;color:var(--bronze);white-space:nowrap}
+.obj:hover .plate img{transform:scale(1.045)}
+.obj .plate img{transition:transform 1.4s var(--ease)}
+
+/* ---- studio note ---- */
+.studio{background:var(--graphite);color:var(--bone);padding:120px 0}
+.studio .sec-label{border-top-color:#33373f}
+.studio .sec-label .no{color:var(--bronze)}
+.studio-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.studio-grid .plate{aspect-ratio:1/1.05}
+.studio-quote{font-family:"Syne",sans-serif;font-weight:400;font-size:clamp(1.5rem,2.9vw,2.4rem);line-height:1.22;letter-spacing:-.01em}
+.studio-quote em{font-style:normal;color:var(--bronze)}
+.studio-note{margin-top:28px;color:#9ba1ab;font-size:.98rem;max-width:440px}
+
+/* ---- contact ---- */
+.contact{padding:120px 0 60px}
+.contact .statement{font-size:clamp(2.2rem,5.4vw,4.6rem)}
+.contact-row{display:flex;justify-content:space-between;align-items:end;gap:40px;margin-top:60px;flex-wrap:wrap}
+.contact-row p{max-width:400px;color:#6a675f;margin:0}
+
+.footer{border-top:1px solid var(--hairline);margin-top:90px;padding:26px 0 40px}
+.footer-row{display:flex;justify-content:space-between;gap:16px;font-family:"Space Mono",monospace;font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;color:#8a857a;flex-wrap:wrap}
+
+/* reveal: slow, heavy fades — few and serious */
+.reveal{opacity:0;transform:translateY(34px);transition:opacity 1.2s var(--ease),transform 1.2s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+
+@media (max-width:900px){
+  .nav-links{display:none}
+  .hero{padding:70px 0 60px}
+  .hero-sub{flex-direction:column;align-items:start}
+  .hero-sub .meta{text-align:left}
+  .obj,.obj:nth-child(even){grid-template-columns:1fr;gap:22px}
+  .obj:nth-child(even) .obj-visual{order:initial}
+  .studio-grid{grid-template-columns:1fr;gap:40px}
+  .section,.studio,.contact{padding:76px 0}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
+  .reveal{opacity:1;transform:none}
+  .plate img{transform:none}
+}
