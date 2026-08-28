@@ -14,10 +14,7 @@ A static portfolio and three independently browsable showcase builds.
 
 ## Before sending to a client
 
-Replace:
-- `YOUR_EMAIL@example.com`
-- `YOUR_NUMBER`
-- Any remaining fictional/independent-build language if the projects later become real work.
+Contact details are live (email + WhatsApp). The two brand showcases are explicitly presented as independent fictional builds. Do not represent them as client work.
 
 The two brand showcases are explicitly presented as independent fictional builds. Do not represent them as client work.
 
