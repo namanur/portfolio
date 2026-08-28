@@ -69,9 +69,16 @@ h2{font-family:"JetBrains Mono",monospace;font-weight:400;font-size:clamp(1.25re
 .grid-val{font:600 9px var(--mono,monospace);fill:#5a554b;letter-spacing:.08em}
 .note-stem{stroke:#5a554b;stroke-width:1;stroke-dasharray:2 3}
 .note-text{font:600 10px var(--mono,monospace);fill:var(--amber);text-anchor:middle;letter-spacing:.06em}
+.note-stem{stroke-dasharray:24;stroke-dashoffset:24;transition:stroke-dashoffset .6s var(--ease) 2.6s}
+.note-text{opacity:0;transition:opacity .8s var(--ease) 3s}
+.chart-panel.in .note-stem{stroke-dashoffset:0}
+.chart-panel.in .note-text{opacity:1}
+@keyframes kpi-pop{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.chart-panel.in .pt{animation:kpi-pop .3s var(--ease)}
 .band{fill:var(--green);opacity:.07}
 .band-edge{stroke:var(--green);stroke-width:1;stroke-dasharray:4 5;opacity:.45}
 .spark{fill:none;stroke-width:2.5;stroke-linecap:round;stroke-dasharray:1400;stroke-dashoffset:1400;transition:stroke-dashoffset 2.4s var(--ease) .3s}
+.spark-ma{stroke-width:1.5;opacity:.75;transition-delay:1s;transition-duration:2s}
 .in .spark,.chart-panel.in .spark{stroke-dashoffset:0}
 .cross-line{position:absolute;top:0;bottom:0;width:1px;background:var(--dim);opacity:.55;pointer-events:none}
 .pt{position:absolute;width:9px;height:9px;border-radius:50%;transform:translate(-50%,-50%);pointer-events:none;box-shadow:0 0 0 3px rgba(11,10,9,.85)}
@@ -79,7 +86,10 @@ h2{font-family:"JetBrains Mono",monospace;font-weight:400;font-size:clamp(1.25re
 .pt-fc{background:var(--blue)}
 .line-tag{position:absolute;right:0;transform:translateY(-50%);font-family:"JetBrains Mono",monospace;font-size:.62rem;color:var(--amber);pointer-events:none}
 .line-tag.tag-fc{color:var(--blue)}
-.axis{display:flex;justify-content:space-between;margin-top:8px;font-family:"JetBrains Mono",monospace;font-size:.62rem;color:var(--dim)}
+.axis{position:relative;margin-top:8px;height:1em;font-family:"JetBrains Mono",monospace;font-size:.62rem;color:var(--dim)}
+.axis span{position:absolute;transform:translateX(-50%)}
+.axis span:first-child{transform:none}
+.src{margin-left:auto;opacity:.55;font-size:.6rem}
 .legend{display:flex;gap:26px;margin-top:16px;font-family:"JetBrains Mono",monospace;font-size:.68rem;color:var(--dim)}
 .legend i{font-style:normal;display:inline-flex;align-items:center;gap:8px}
 .legend i::before{content:"";width:14px;height:2px;background:var(--dot)}
