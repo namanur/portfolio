@@ -104,7 +104,9 @@ section[id],.process,.contact{scroll-margin-top:80px}
 .work-copy{max-width:480px;color:var(--muted)}
 .work-tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:25px}
 .tag{border:1px solid var(--line);padding:7px 10px;font-size:11px;border-radius:3px}
-.browser{position:absolute;inset:10% 8%;background:var(--white);box-shadow:20px 25px 0 rgba(0,0,0,.15);z-index:2}
+.browser{position:absolute;inset:10% 8%;top:calc(10% + var(--parallax, 0px));background:var(--white);box-shadow:20px 25px 0 rgba(0,0,0,.15);z-index:2}
+/* Watermelon-style micro-interaction: the mock lifts toward you on hover */
+.work:hover .browser{transform:translateY(-8px)}
 .browser-top{height:30px;border-bottom:1px solid #d9d3c8;display:flex;align-items:center;gap:5px;padding:0 10px}
 .browser-top b{width:5px;height:5px;border-radius:50%;background:#bbb}
 .browser-body{padding:10%}
