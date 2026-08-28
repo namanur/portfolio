@@ -1,0 +1,40 @@
+{
+  "projects": [
+    {
+      "id": "cafe-aava",
+      "name": "Caf\u00e9 Aava",
+      "type": "Independent build",
+      "url": "showcases/cafe-aava/",
+      "status": "concept",
+      "proof": [
+        "landing page",
+        "responsive design",
+        "conversion hierarchy"
+      ]
+    },
+    {
+      "id": "atelier-north",
+      "name": "Atelier North",
+      "type": "Independent build",
+      "url": "showcases/atelier-north/",
+      "status": "concept",
+      "proof": [
+        "brand direction",
+        "typography",
+        "scroll storytelling"
+      ]
+    },
+    {
+      "id": "amulet-black",
+      "name": "Amulet Black",
+      "type": "Interface study",
+      "url": "showcases/frontend-lab/",
+      "status": "study",
+      "proof": [
+        "UI system",
+        "data density",
+        "component thinking"
+      ]
+    }
+  ]
+}
