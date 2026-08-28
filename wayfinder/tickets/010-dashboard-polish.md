@@ -1,7 +1,7 @@
 # Polish the frontend-lab dashboard to showcase quality
 
 Labels: wayfinder:task
-Status: open
+Status: open (terminal-instrument rebuild done 2026-08-28 — critique pass + mobile check remain)
 Assignee: (unclaimed)
 Blocked-by: 003, 004
 
@@ -12,3 +12,7 @@ What does the existing `~/Projects/frontend-lab` dashboard (template + DESIGN.md
 ## Identity brief (decision 0002)
 
 Amulet Black already has the strongest distinct identity (dark, dense). Polish direction: lean **further into terminal/data** — IBM Plex Mono or JetBrains Mono as primary, amber/phosphor-green signal accents on near-black, scanline-hover on rows, animated sparkline, keyboard-first hints. It should feel like an instrument, not a website. Not cute — precise.
+
+## Progress
+
+Rebuilt with own `theme.css`: JetBrains Mono primary, near-black panels, per-panel signal underlines (amber/blue/green), animated sparkline draw-in, scanline-hover token table, LIVE pulse, keyboard hint footer. No photos needed — it's an instrument. Remaining: critique pass + mobile check.

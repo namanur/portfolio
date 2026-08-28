@@ -1,7 +1,7 @@
 # Build Showcase 2 — global brand scroll-storytelling page
 
 Labels: wayfinder:task
-Status: open (identity brief written — rebuild pending)
+Status: open (identity rebuilt 2026-08-28 — awaiting generated photos, then critique pass)
 Assignee: (unclaimed)
 Blocked-by: 003, 006
 
@@ -17,3 +17,7 @@ Atelier North must feel **cold, precise, expensive** — the anti-café. Rebuild
 - **Signature moves**: numbered index navigation (01 Objects / 02 Studio), full-bleed generated object photography with slow scale-on-scroll, hairline rules, hover-reveal captions, prices in tiny mono.
 - **Photos needed** (`img/`): `plinth.jpg`, `stool.jpg`, `lamp.jpg`, `studio.jpg` — prompts: minimalist furniture photography, Scandinavian/Japanese joinery, oak + limestone, soft north-window light, editorial, no people.
 - Motion: slow, few, heavy — the opposite of the café's playfulness.
+
+## Progress
+
+Rebuilt with own `theme.css`: Syne + Archivo + Space Mono, bone/graphite/steel-blue/bronze, numbered index nav, alternating object rows with mono prices, dark studio band, slow Variant-curve motion, hover caption reveals. Live. Remaining: photos into `img/` (`hero.jpg`, `plinth.jpg`, `stool.jpg`, `lamp.jpg`, `studio.jpg`) + critique pass + mobile check.
