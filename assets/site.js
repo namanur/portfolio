@@ -18,17 +18,31 @@ document.querySelectorAll('.section-head h2, .contact h2').forEach(h => {
   h.appendChild(rise);
 });
 
-/* Entry reveals */
-const io = new IntersectionObserver((entries) => {
-  entries.forEach(e => {
-    if (e.isIntersecting) {
-      e.target.classList.add('in');
-      io.unobserve(e.target);
-    }
+/* Reveal engine. Two guarantees:
+   1. CSS only hides things when .js is on <html> — no JS, fully visible page.
+   2. Besides IntersectionObserver, a scroll sweep reveals anything whose top
+      is above the fold — so hash-jumps and IO failures can never leave a
+      section invisible. */
+const toReveal = [...document.querySelectorAll('.reveal,.stagger,.hero-copy,.work,.process-grid,.rise-wrap')];
+const revealEl = el => el.classList.add('in');
+if ('IntersectionObserver' in window) {
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        revealEl(e.target);
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: .12 });
+  toReveal.forEach(el => io.observe(el));
+  const sweep = () => toReveal.forEach(el => {
+    if (!el.classList.contains('in') && el.getBoundingClientRect().top < innerHeight * .92) revealEl(el);
   });
-}, { threshold: .12 });
-
-document.querySelectorAll('.reveal,.stagger,.hero-copy,.work,.process-grid,.rise-wrap').forEach(el => io.observe(el));
+  addEventListener('load', sweep);
+  addEventListener('scroll', sweep, { passive: true });
+} else {
+  toReveal.forEach(revealEl);
+}
 
 /* Smooth anchor navigation */
 document.querySelectorAll('a[href^="#"]').forEach(a => {
