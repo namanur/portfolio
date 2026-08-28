@@ -24,7 +24,7 @@ Sendable without apologizing for anything — no unfinished showcases, no placeh
 - Soft pricing anchor (~₹15k start / ₹20–25k typical); exact wording decided in copy work.
 - Contact: WhatsApp + email. Form backend only if it earns its complexity.
 - Stack: Tailwind CSS + vanilla HTML/JS unless a build decision says otherwise. Easy-to-modify structure is part of the sales story.
-- Deploy: monorepo, separate Netlify sites — portfolio is the showroom, showcases are independent "products". Subdomain name stays open until deployment (candidates: namanbuilds / namanmakes / namandesigns).
+- Deploy: **decided & changed — GitHub Pages via gh CLI**, not Netlify. Live at https://namanur.github.io/portfolio/ (repo namanur/portfolio); pushes to master auto-deploy. Showcases live under /showcases/ paths rather than separate domains — acceptable because all site paths are relative and the work section links directly to each build. Netlify remains an option if independent showcase domains are ever wanted.
 - **Nandan Traders (nandantrader.in) — decided**: Naman's first site, shipped live for a real wholesale business, but explicitly a vibe-coded learning artifact. **Not a portfolio showcase.** May inform the about/journey copy ("first site live → this is what came next") as honest growth narrative; never presented as a work sample. Its lessons (real-content constraints, real domain, real launch) feed every build ticket.
 - **Color direction (decided by Naman)**: monochromatic neutral base with **green and orange** accents. Project constraint — art directions work within it. Discipline from the reference study still governs: color receives attention by being scarce; decide which accent leads (e.g. green primary, orange reserved for genuinely primary moments) and never let both compete at the same hierarchy level.
 - Interleaved flow: art direction → portfolio skeleton → showcase 1 → portfolio iteration → showcase 2 → portfolio iteration → dashboard polish → final portfolio polish → deployment.
@@ -45,11 +45,15 @@ Sendable without apologizing for anything — no unfinished showcases, no placeh
 <!-- one line per closed ticket; a decision lives in its ticket, not here -->
 
 - [Study design references: Godly.design, Variant.com, Watermelon UI](tickets/001-study-design-references.md): ten distilled principles (one-accent scarcity, semantic tokens, single signature easing, scroll-driven transformation, reject kit-default identity…), full study in [docs/design/research/references-study.md](docs/design/research/references-study.md). Color direction decided here by Naman: monochrome base + green and orange accents.
+- [Three art directions — pick the portfolio's visual identity](tickets/004-art-direction-samples.md): direction locked through the adopted v1 + iterations rather than 3 samples — warm-paper editorial monochrome, green/orange accents, DM Sans + Instrument Serif, single easing. Encoded in tokens.
+- [Choose Showcase 1 subject — Indian-business landing page](tickets/005-showcase1-subject.md): Café Aava (Jaipur café), chosen and built via v1; live on production.
+- [Choose Showcase 2 subject — global-feeling brand page](tickets/006-showcase2-subject.md): Atelier North (objects/brand studio, oversized type), chosen and built via v1; live on production.
+- [Deploy the three showcases as independent Netlify sites](tickets/011-deploy-showcases.md): superseded — GitHub Pages hosts the monorepo; showcases verified live under /showcases/ paths. Netlify per-site deploys remain an option.
 
 ## Not yet specified
 
 - **Case-study presentation format**: how each showcase appears inside the portfolio — static screenshots, live embedded previews, or links out. Depends on the chosen art direction and how the showcases actually turn out. Graduates once the portfolio skeleton exists.
-- **Specific green/orange values and accent roles**: which greens/oranges (and their accessible contrast pairs), which accent leads, and where orange is reserved. Graduates into the art-direction samples and then the token foundation; until then the direction is a constraint, not a palette.
+- **Specific green/orange values and accent roles**: decided in practice during the art-direction lock (light: `#2e6b4e`/`#c9662a`; dark: `#74c69a`/`#e39a63`; green leads, orange for small primary moments) — final values confirmed at the art-direction review.
 - **The "isn't this just AI-generated?" objection**: whether the portfolio addresses it head-on, how, and where. Might surface during copy work or the send test; can't phrase the decision precisely until there's real copy and real work to point at.
 - **Showcase quality audit criteria**: what minimum bar each showcase must clear before deployment. Sharper once one showcase exists to calibrate against.
 - **Responsive/animation polish pass details**: which breakpoints, which motion moments get extra care. Specifiable after the portfolio skeleton exists.

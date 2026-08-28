@@ -1,10 +1,14 @@
 # Deploy the portfolio — subdomain choice and launch
 
 Labels: wayfinder:task
-Status: open
+Status: open (deployed early; final re-verify before send)
 Assignee: (unclaimed)
 Blocked-by: 012
 
-## Question
+## Resolution progress
 
-Which subdomain, and is it live? Pick from namanbuilds / namanmakes / namandesigns (or better) — short, clean, easy to say aloud, consistent with the portfolio identity; check Netlify availability. Deploy, verify the production URL end to end, and record the final URL. This ticket's resolution produces the artifact the whole map exists for: a URL Naman can send.
+Naman chose GitHub Pages over Netlify (gh CLI). Portfolio deployed early on 2026-08-28: **https://namanur.github.io/portfolio/** — verified live, CSS + all three showcases resolve, contact details wired. Deployment is continuous (push to master = deploy), so this ticket's remaining scope at final-polish time is only: re-verify production end to end after the last polish pass, and optionally a custom domain later.
+
+## Original question
+
+Which subdomain, and is it live? Superseded: GitHub Pages URL chosen instead of a Netlify brand subdomain.
